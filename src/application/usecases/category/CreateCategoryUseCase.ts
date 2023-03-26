@@ -1,10 +1,12 @@
-import Category from "../../../domain/entities/Category";
-import CategoryErrors from "../../../domain/entities/errors/CategoryErrors";
-import Response from "../../../domain/entities/Response";
-import CategoryAlreadyExistsException from "../../../domain/exceptions/category-exceptions/CategoryAlreadyExistsException";
-import CreateCategoryException from "../../../domain/exceptions/category-exceptions/CreateCategoryException";
-import ICategoryRepo from "../../../domain/repositories/ICategoryRepo";
-import ICategoryValidationsRepo from "../../../domain/repositories/validations/ICategoryValidationsRepo";
+
+import Category from "@/domain/entities/Category";
+import CategoryErrors from "@/domain/entities/errors/CategoryErrors";
+import Response from "@/domain/entities/Response";
+import CreateCategoryException from "@/domain/exceptions/category-exceptions/CreateCategoryException";
+// import CreateCategoryException from "@/domain/exceptions/category-exceptions/CreateCategoryException";
+// import CategoryAlreadyExistsException from "@/domain/exceptions/category-exceptions/CategoryAlreadyExistsException";
+import ICategoryRepo from "@/domain/repositories/ICategoryRepo";
+import ICategoryValidationsRepo from "@/domain/repositories/validations/ICategoryValidationsRepo";
 
 class CreateCategoryUseCase {
     private readonly categoryRepo: ICategoryRepo;

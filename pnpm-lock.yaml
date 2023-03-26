@@ -55,7 +55,7 @@ specifiers:
   sass: ^1.58.3
   skycons: ^1.0.0
   styled-components: ^5.3.8
-  typescript: ^4.9.3
+  typescript: ^4.9.5
   vite: ^4.1.0
   yup: ^1.0.2
   yup-password: ^0.2.2

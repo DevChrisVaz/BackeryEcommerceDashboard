@@ -1,6 +1,6 @@
-import Response from "../../../domain/entities/Response";
-import User from "../../../domain/entities/User";
-import IUserRepo from "../../../domain/repositories/IUserRepo";
+import Response from "@/domain/entities/Response";
+import User from "@/domain/entities/User";
+import IUserRepo from "@/domain/repositories/IUserRepo";
 
 class UpdateUserUseCase {
     private readonly userRepo: IUserRepo;

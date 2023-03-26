@@ -1,6 +1,6 @@
-import Category from "../../../domain/entities/Category";
-import Response from "../../../domain/entities/Response";
-import ICategoryRepo from "../../../domain/repositories/ICategoryRepo";
+import Category from "@/domain/entities/Category";
+import Response from "@/domain/entities/Response";
+import ICategoryRepo from "@/domain/repositories/ICategoryRepo";
 
 class UpdateCategoryUseCase {
     private readonly categoryRepo: ICategoryRepo;

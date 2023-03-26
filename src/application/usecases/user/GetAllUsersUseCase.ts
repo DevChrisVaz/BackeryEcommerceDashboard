@@ -1,7 +1,7 @@
-import Response from "../../../domain/entities/Response";
-import User from "../../../domain/entities/User";
-import IUserRepo from "../../../domain/repositories/IUserRepo";
-import getFullName from "../../../domain/services/user-services/getFullName";
+import Response from "@/domain/entities/Response";
+import User from "@/domain/entities/User";
+import IUserRepo from "@/domain/repositories/IUserRepo";
+import getFullName from "@/domain/services/user-services/getFullName";
 
 class GetAllUsersUseCase {
     private readonly userRepo: IUserRepo;

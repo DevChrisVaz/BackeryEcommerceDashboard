@@ -1,6 +1,6 @@
-import Ingredient from "../../../domain/entities/Ingredient";
-import Response from "../../../domain/entities/Response";
-import IIngredientRepo from "../../../domain/repositories/IIngredientRepo";
+import Ingredient from "@/domain/entities/Ingredient";
+import Response from "@/domain/entities/Response";
+import IIngredientRepo from "@/domain/repositories/IIngredientRepo";
 
 class GetIngredientByIdUseCase {
     private readonly ingredientRepo: IIngredientRepo;

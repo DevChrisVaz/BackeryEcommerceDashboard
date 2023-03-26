@@ -1,5 +1,5 @@
-import Response from "../../../domain/entities/Response";
-import IUserRepo from "../../../domain/repositories/IUserRepo";
+import Response from "@/domain/entities/Response";
+import IUserRepo from "@/domain/repositories/IUserRepo";
 
 class UserLoginUseCase {
     private readonly userRepo: IUserRepo;

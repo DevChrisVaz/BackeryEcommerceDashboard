@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import dotenv from "dotenv";
+import { resolve } from 'path';
 
 dotenv.config();
 
@@ -13,4 +14,9 @@ export default defineConfig({
       return env;
     }, {}),
   },
+  resolve: {
+    alias: {
+      "@": resolve(__dirname, "src")
+    }
+  }
 })

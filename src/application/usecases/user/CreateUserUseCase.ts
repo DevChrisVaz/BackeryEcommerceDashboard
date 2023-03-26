@@ -1,9 +1,9 @@
-import UserErrors from "../../../domain/entities/errors/UserErrors";
-import Response from "../../../domain/entities/Response";
-import User from "../../../domain/entities/User";
-import CreateUserException from "../../../domain/exceptions/user-exceptions/CreateUserException";
-import IUserRepo from "../../../domain/repositories/IUserRepo";
-import IUserValidationsRepo from "../../../domain/repositories/validations/IUserValidationsRepo";
+import UserErrors from "@/domain/entities/errors/UserErrors";
+import Response from "@/domain/entities/Response";
+import User from "@/domain/entities/User";
+import CreateUserException from "@/domain/exceptions/user-exceptions/CreateUserException";
+import IUserRepo from "@/domain/repositories/IUserRepo";
+import IUserValidationsRepo from "@/domain/repositories/validations/IUserValidationsRepo";
 
 class CreateUserUseCase {
     private readonly userRepo: IUserRepo;

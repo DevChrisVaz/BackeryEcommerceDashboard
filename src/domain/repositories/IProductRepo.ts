@@ -1,4 +1,4 @@
-import Product from "../entities/product";
+import Product from "../entities/Product";
 import Response from "../entities/Response";
 
 interface IProductRepo {

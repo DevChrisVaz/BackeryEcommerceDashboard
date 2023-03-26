@@ -1,6 +1,6 @@
-import Product from "../../../domain/entities/Product";
-import Response from "../../../domain/entities/Response";
-import IProductRepo from "../../../domain/repositories/IProductRepo";
+import Product from "@/domain/entities/Product";
+import Response from "@/domain/entities/Response";
+import IProductRepo from "@/domain/repositories/IProductRepo";
 
 class GetProductByIdUseCase {
     private readonly productRepo: IProductRepo;
