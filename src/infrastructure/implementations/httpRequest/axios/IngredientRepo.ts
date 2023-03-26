@@ -2,12 +2,15 @@ import axios from "axios";
 import Ingredient from "../../../../domain/entities/Ingredient";
 import Response from "../../../../domain/entities/Response";
 import IIngredientRepo from "../../../../domain/repositories/IIngredientRepo";
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 class IngredientRepo implements IIngredientRepo {
     private readonly url: string;
 
     constructor(){ 
-        this.url = "http://localhost:5000/api/ingredients/";
+        this.url = process.env.API_URL + "/ingredients/";
     }
 
     async getAll(): Promise<Response<Ingredient[]>> {

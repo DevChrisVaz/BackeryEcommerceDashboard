@@ -2,12 +2,15 @@ import axios from "axios";
 import Category from "../../../../domain/entities/Category";
 import Response from "../../../../domain/entities/Response";
 import ICategoryRepo from "../../../../domain/repositories/ICategoryRepo";
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 class CategoryRepo implements ICategoryRepo {
     private readonly url: string;
 
     constructor(){ 
-        this.url = "http://localhost:5000/api/categories/";
+        this.url = process.env.API_URL + "categories/";
     }
 
     async getAll(): Promise<Response<Category[]>> {

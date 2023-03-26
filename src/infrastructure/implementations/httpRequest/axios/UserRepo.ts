@@ -2,12 +2,15 @@ import axios from "axios";
 import Response from "../../../../domain/entities/Response";
 import User from "../../../../domain/entities/User";
 import IUserRepo from "../../../../domain/repositories/IUserRepo";
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 class UserRepo implements IUserRepo {
     private readonly url: string;
 
     constructor(){ 
-        this.url = "http://localhost:5000/api/users/";
+        this.url = process.env.API_URL + "/users/";
     }
 
     async getAll(): Promise<Response<User[]>> {

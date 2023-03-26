@@ -2,12 +2,15 @@ import axios from "axios";
 import Product from "../../../../domain/entities/Product";
 import Response from "../../../../domain/entities/Response";
 import IProductRepo from "../../../../domain/repositories/IProductRepo";
+// import dotenv from "dotenv";
+
+// dotenv.config();
 
 class ProductRepo implements IProductRepo {
     private readonly url: string;
 
     constructor(){ 
-        this.url = "http://localhost:5000/api/products/";
+        this.url =process.env.API_URL + "/products/";
     }
 
     async getAll(): Promise<Response<Product[]>> {
