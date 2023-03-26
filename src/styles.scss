@@ -1,0 +1,170 @@
+// rgb(87, 60, 48) #573c30
+// rgb(108, 84, 74) #6c544a
+// rgb(129, 109, 100) #816d64
+// rgb(150, 133, 126) #96857e
+// rgb(171, 157, 151) #ab9d97
+// rgb(192, 182, 177) #c0b6b1
+// rgb(213, 206, 203) #d5cecb
+// rgb(234, 231, 229) #eae7e5
+
+$background-color: #fffaf4;
+
+$color-primary: #573c30;
+$color-primary-hover: #6c544a;
+
+$color-secondary: #816d64;
+$color-secondary-hover: #96857e;
+
+$color-soft: #eae7e5;
+
+.bgc-main {
+    background: $background-color;
+}
+
+.actions-container {
+    padding: 10px 10px 0 0;
+    justify-content: end;
+    display: grid;
+    gap: 5px;
+
+    &>button {
+        grid-column: 1;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+    }
+}
+
+.card {
+    margin-bottom: 30px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid transparent;
+    border-radius: 0;
+}
+
+.card .card-subtitle {
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: #8898aa;
+}
+
+.table-product.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f3f8fa !important
+}
+
+.table-product td {
+    border-top: 0px solid #dee2e6 !important;
+    color: #728299 !important;
+}
+
+.sidebar-icon {
+    color: $color-primary;
+}
+
+.nav-icon {
+    background: $color-secondary !important;
+}
+
+.button-primary {
+    background: $color-primary;
+    color: #fff;
+
+    &:hover {
+        background: $color-primary-hover;
+    }
+}
+
+.button-secondary {
+    background: $color-secondary;
+    color: #fff;
+
+    &:hover {
+        background: $color-secondary-hover;
+    }
+}
+
+.txt-primary {
+    color: $color-primary;
+}
+
+.bgc-soft {
+    background: $color-soft;
+}
+
+.button-rounded {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    padding: 0;
+    margin-right: 5px;
+}
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    padding: 3px 10px;
+    margin: 5px 3px;
+    background: $color-secondary;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    
+    & > span {
+        margin-right: 2px;
+    }
+}
+
+//#region Datepicker
+.datepicker .datepicker-days {
+    .prev, .datepicker-switch, .next {
+        &:hover {
+            background: $color-soft;
+            color: black;
+        }
+    }
+
+    .day {
+        &:hover {
+            background: $color-soft;
+            color: black;
+        }
+    
+        &.active {
+            background-image: none !important;
+            background: $color-primary !important;
+        }
+    }
+}
+//#endregion
+
+//#region DataTables styles
+
+.dataTables_filter {
+    margin-bottom: 10px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: $color-primary;
+    cursor: pointer;
+
+    &:hover {
+        background: $color-primary-hover;
+    }
+}
+
+.dataTables_wrapper .table-striped .odd {
+    background: $color-soft;
+}
+//#endregion
