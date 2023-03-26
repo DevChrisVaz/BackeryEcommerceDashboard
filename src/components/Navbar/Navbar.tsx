@@ -67,7 +67,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             </li>
           </ul>
           <ul className="nav-right">
-            <li className="notifications dropdown">
+            {/* <li className="notifications dropdown">
               <span className="counter nav-icon">3</span>
               <a href="" className="dropdown-toggle no-after" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 <i className="ti-bell"></i>
@@ -227,7 +227,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                   </span>
                 </li>
               </ul>
-            </li>
+            </li> */}
             <li className="dropdown">
               <a href="" className="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-bs-toggle="dropdown">
                 <div className="peer mR-10">
@@ -238,7 +238,7 @@ const Navbar: React.FC<NavbarProps> = () => {
                 </div>
               </a>
               <ul className="dropdown-menu fsz-sm">
-                <li>
+                {/* <li>
                   <a href="" className="d-b td-n pY-5 bgcH-grey-100 c-grey-700">
                     <i className="ti-settings mR-10"></i>
                     <span>Setting</span>
@@ -255,8 +255,8 @@ const Navbar: React.FC<NavbarProps> = () => {
                     <i className="ti-email mR-10"></i>
                     <span>Messages</span>
                   </a>
-                </li>
-                <li role="separator" className="divider"></li>
+                </li> */}
+                {/* <li role="separator" className="divider"></li> */}
                 <li style={{ cursor: "pointer" }}>
                   <a className="d-b td-n pY-5 bgcH-grey-100 c-grey-700" data-bs-toggle="modal" data-bs-target={"#" + modalId}>
                     <i className="ti-power-off mR-10"></i>

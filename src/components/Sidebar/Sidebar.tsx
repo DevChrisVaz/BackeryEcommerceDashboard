@@ -61,38 +61,37 @@ const Sidebar : React.FC<SidebarProps> = () => {
                     {/* <i className="c-red-500 ti-layers"></i> */}
                     <CollectionsBookmark className="sidebar-icon" />
                   </span>
-                <span className="title">Catalogs</span>
+                <span className="title">Catálogos</span>
                 <span className="arrow">
                     <i className="ti-angle-right"></i>
                   </span>
               </a>
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink className='sidebar-link' to="categories">Categories</NavLink>
+                  <NavLink className='sidebar-link' to="categories">Categorías</NavLink>
                 </li>                 
                 <li>
-                  <NavLink className='sidebar-link' to="products">Products</NavLink>
+                  <NavLink className='sidebar-link' to="products">Productos</NavLink>
+                </li>
+                {/* <li>
+                  <NavLink className='sidebar-link' to="ingredients">Ingredientes</NavLink>
                 </li>
                 <li>
-                  <NavLink className='sidebar-link' to="ingredients">Ingredients</NavLink>
-                </li>
-                <li>
-                  <NavLink className='sidebar-link' to="recipes">Recipes</NavLink>
-                </li>
+                  <NavLink className='sidebar-link' to="recipes">Recetas</NavLink>
+                </li> */}
                 <li>
                   <NavLink className='sidebar-link' to="users">Usuarios</NavLink>
                 </li>
               </ul>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink to="/email">
                 <span className="icon-holder">
-                  {/* <i className="c-brown-500 ti-email"></i> */}
                   <Email className="sidebar-icon" />
                 </span>
                 <span className="title">Email</span>
               </NavLink>
-            </li>
+            </li> */}
             {/* <li className="nav-item">
               <a className='sidebar-link' href="calendar.html">
                 <span className="icon-holder">
@@ -101,15 +100,14 @@ const Sidebar : React.FC<SidebarProps> = () => {
                 <span className="title">Calendar</span>
               </a>
             </li> */}
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <NavLink to="/messenger">
                 <span className="icon-holder">
-                  {/* <i className="c-deep-purple-500 ti-comment-alt"></i> */}
                   <WhatsApp className="sidebar-icon" />
                 </span>
                 <span className="title">Chat</span>
               </NavLink>
-            </li>
+            </li> */}
             {/* <li className="nav-item">
               <NavLink to="/settings">
                 <span className="icon-holder">
