@@ -1,6 +1,6 @@
 interface Timestamps {
-    updated_at?: string;
-    created_at?: string;
+    updatedAt?: string;
+    createdAt?: string;
 }
 
 export default Timestamps;

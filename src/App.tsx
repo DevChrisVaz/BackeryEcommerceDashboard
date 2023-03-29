@@ -27,6 +27,11 @@ import { CreateIngredient } from './pages/Ingredients/CreateIngredient';
 import { Users } from './pages/Users';
 import { UsersList } from './pages/Users/UsersList';
 import { CreateUser } from './pages/Users/CreateUser';
+import { Comments } from './pages/Comments';
+import { CommentsList } from './pages/Comments/CommentsList';
+import { Quotes } from './pages/Quotes';
+import { QuotesList } from './pages/Quotes/QuotesList';
+import { QuotesDetails } from './pages/Quotes/QuotesDetails';
 
 function App() {
 
@@ -69,6 +74,13 @@ function App() {
               <Route index element={<UsersList />} />
               <Route path="new" element={<CreateUser />} />
               {/* <Route path=':id' element={<ProductDetails />} /> */}
+            </Route>
+            <Route path="comments" element={<Comments />}>
+              <Route index element={<CommentsList />} />
+            </Route>
+            <Route path="quotes" element={<Quotes />}>
+              <Route index element={<QuotesList />} />
+              <Route path=":id" element={<QuotesDetails />} />
             </Route>
           </Route>
           <Route path="login" element={<Login />} />

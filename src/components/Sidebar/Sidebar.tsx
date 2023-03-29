@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { CollectionsBookmark, Email, Home, Settings, WhatsApp } from '@mui/icons-material';
+import { CollectionsBookmark, Email, Home, Settings, WhatsApp, Comment, RequestQuote } from '@mui/icons-material';
 import logic from "./logic";
 export interface SidebarProps {}
 
@@ -84,6 +84,24 @@ const Sidebar : React.FC<SidebarProps> = () => {
                 </li>
               </ul>
             </li>
+            <li className="nav-item">
+              <NavLink className='sidebar-link' to="/comments">
+                <span className="icon-holder">
+                  {/* <i className="c-indigo-500 ti-bar-chart"></i> */}
+                  <Comment className="sidebar-icon" />
+                </span>
+                <span className="title">Comentarios</span>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className='sidebar-link' to="/quotes">
+                <span className="icon-holder">
+                  {/* <i className="c-indigo-500 ti-bar-chart"></i> */}
+                  <RequestQuote className="sidebar-icon" />
+                </span>
+                <span className="title">Cotizaciones</span>
+              </NavLink>
+            </li>
             {/* <li className="nav-item">
               <NavLink to="/email">
                 <span className="icon-holder">
@@ -116,14 +134,6 @@ const Sidebar : React.FC<SidebarProps> = () => {
                 </span>
                 <span className="title">Settings</span>
               </NavLink>
-            </li> */}
-            {/* <li className="nav-item">
-              <a className='sidebar-link' href="charts.html">
-                <span className="icon-holder">
-                  <i className="c-indigo-500 ti-bar-chart"></i>
-                </span>
-                <span className="title">Charts</span>
-              </a>
             </li> */}
             {/* <li className="nav-item">
               <a className='sidebar-link' href="forms.html">

@@ -41,7 +41,7 @@ specifiers:
   load-google-maps-api: ^2.0.2
   lodash: ^4.17.21
   masonry-layout: ^4.2.2
-  moment: ^2.29.1
+  moment: ^2.29.4
   numeral: ^2.0.6
   perfect-scrollbar: ^1.5.1
   react: ^18.2.0

@@ -93,7 +93,6 @@ const ProductsList: React.FC<ProductsListProps> = () => {
 		getAllProducts();
 	}, []);
 
-
 	return isLoading ? <Loading /> : (
 		<>
 			<Modal modalId={modalId}>

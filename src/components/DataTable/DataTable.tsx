@@ -15,6 +15,8 @@ export interface DataTableProps<T> {
 
 interface Actions {
 	delete?: (registry: any) => void;
+	edit?: () => void;
+	details?: boolean;
 }
 
 const DataTable: React.FC<DataTableProps<any>> = (props) => {
@@ -26,7 +28,7 @@ const DataTable: React.FC<DataTableProps<any>> = (props) => {
 
 	return (
 		<>
-			
+
 			<table id="dataTable" className="table table-striped table-bordered" cellSpacing={0} width="100%">
 				<thead>
 					<tr>
@@ -65,7 +67,8 @@ const DataTable: React.FC<DataTableProps<any>> = (props) => {
 											return (
 												<td key={column.id}>{
 													column.price ? numeral(row[column.id]).format("$0,0.00") :
-														row[column.id]
+														column.concat && column.concat.fields.length > 0 ? column.concat.fields.map((field: string) => row[field] + column.concat.separator) :
+															row[column.id]
 												}</td>
 											)
 										})
@@ -73,13 +76,22 @@ const DataTable: React.FC<DataTableProps<any>> = (props) => {
 									{
 										props.actions && (
 											<td>
-												<div>
-													<button className="btn button-primary button-rounded text-white"><i className="bi bi-eye-fill"></i></button>
-													<button className="btn button-secondary button-rounded text-white"><i className="bi bi-pencil-fill"></i></button>
-													<button 
-														className="btn btn-danger button-rounded text-white"
-														onClick={(e:any) =>{ e.stopPropagation(), props.actions?.delete && props.actions.delete(row)}}
-													><i className="bi bi-trash-fill"></i></button>
+												<div className="text-center" style={{ minWidth: "120px" }}>
+													{
+														props.actions.details &&
+														<button className="btn button-primary button-rounded text-white"><i className="bi bi-eye-fill"></i></button>
+													}
+													{
+														props.actions.edit &&
+														<button className="btn button-secondary button-rounded text-white"><i className="bi bi-pencil-fill"></i></button>
+													}
+													{
+														props.actions.delete &&
+														<button
+															className="btn btn-danger button-rounded text-white"
+															onClick={(e: any) => { e.stopPropagation(), props.actions?.delete && props.actions.delete(row) }}
+														><i className="bi bi-trash-fill"></i></button>
+													}
 												</div>
 											</td>
 										)
