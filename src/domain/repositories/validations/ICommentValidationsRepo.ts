@@ -1,4 +1,4 @@
-import Comment from "@/domain/entities/comment";
+import Comment from "@/domain/entities/Comment";
 import CommentErrors from "@/domain/entities/errors/CommentErrors";
 
 interface ICommentValidationsRepo {
