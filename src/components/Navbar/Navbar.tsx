@@ -231,7 +231,7 @@ const Navbar: React.FC<NavbarProps> = () => {
             <li className="dropdown">
               <a href="" className="dropdown-toggle no-after peers fxw-nw ai-c lh-1" data-bs-toggle="dropdown">
                 <div className="peer mR-10">
-                  <img className="w-2r bdrs-50p" src={"http://localhost:5000/" + decodedToken?.profilePicture} alt="Profile" />
+                  <img className="w-2r bdrs-50p" src={process.env.PUBLIC_API_URL + decodedToken?.profilePicture} alt="Profile" />
                 </div>
                 <div className="peer">
                   <span className="fsz-sm c-grey-900">{ decodedToken?.firstName + " " + decodedToken?.lastName }</span>
