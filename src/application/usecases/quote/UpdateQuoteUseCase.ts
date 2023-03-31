@@ -9,8 +9,8 @@ class UpdateQuoteUseCase {
         this.quoteRepo = quoteRepo;
     }
 
-    async run(id: string, quote: Quote): Promise<Response<Quote>> {
-        const response: Response<Quote> = await this.quoteRepo.update(id, quote);
+    async run(id: string, quote: Quote, token: string): Promise<Response<Quote>> {
+        const response: Response<Quote> = await this.quoteRepo.update(id, quote, token);
         return response;
     }
 }

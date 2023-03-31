@@ -9,10 +9,8 @@ export interface LayoutProps { }
 
 const Layout: React.FC<LayoutProps> = () => {
 
-	const token = useSelector(selectToken);
-
 	return (
-		<ProtectedRoutes condition={token !== ""} redirectTo="/login">
+		<ProtectedRoutes redirectTo="/login">
 			<Sidebar />
 			<div className="page-container">
 				<Navbar />

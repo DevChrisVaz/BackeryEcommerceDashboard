@@ -20,10 +20,10 @@ class CreateCategoryUseCase {
         this.categoryValidationsRepo = categoryValidationRepo;
     }
 
-    async run(category: Category): Promise<Response<Category>> {
+    async run(category: Category, token: string): Promise<Response<Category>> {
         const errors: CategoryErrors | null = await this.categoryValidationsRepo.create(category);
         if (errors) throw new CreateCategoryException(errors);
-        const response: Response<Category> | any = await this.categoryRepo.create(category);
+        const response: Response<Category> | any = await this.categoryRepo.create(category, token);
         return response;
     }
 }

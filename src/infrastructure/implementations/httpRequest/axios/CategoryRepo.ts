@@ -23,18 +23,30 @@ class CategoryRepo implements ICategoryRepo {
         return response;
     }
 
-    async create(category: Category): Promise<Response<Category>> {
-        const response = await axios.post(this.url, category);
+    async create(category: Category, token: string): Promise<Response<Category>> {
+        const response = await axios.post(this.url, category, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async update(id:string, category: Category): Promise<Response<Category>> {
-        const response = await axios.put(this.url + id, category);
+    async update(id:string, category: Category, token: string): Promise<Response<Category>> {
+        const response = await axios.put(this.url + id, category, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async delete(id: string): Promise<Response<Category>> {
-        const response = await axios.delete(this.url + id);
+    async delete(id: string, token: string): Promise<Response<Category>> {
+        const response = await axios.delete(this.url + id, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 }

@@ -9,6 +9,8 @@ import { showModal } from '../../../components/Modal/logic';
 import { showResponseToast } from '../../../components/Toasts/ToastResponse/logic';
 import User from '../../../domain/entities/User';
 import UserRepo from '../../../infrastructure/implementations/httpRequest/axios/UserRepo';
+import { useSelector } from 'react-redux';
+import { selectToken } from '@/features/slices/sessionSlice';
 
 export interface UsersListProps { }
 
@@ -23,6 +25,7 @@ const UsersList: React.FC<UsersListProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const modalId = "modal-delete";
 
@@ -53,7 +56,7 @@ const UsersList: React.FC<UsersListProps> = () => {
 	const getAllUsers = async () => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await getAllUsersUseCase.run();
+			const { data, status } = await getAllUsersUseCase.run(token);
 			if (status === 200 && data) setUsers(data);
 			setIsLoading(false);
 		} catch (err) {
@@ -66,7 +69,7 @@ const UsersList: React.FC<UsersListProps> = () => {
 		try {
 			setIsLoading(true);
 			if(userToDelete && userToDelete.uuid) {
-				const { data, status } = await deleteUserUseCase.run(userToDelete.uuid);
+				const { data, status } = await deleteUserUseCase.run(userToDelete.uuid, token);
 				if (status === 200) {
 					setToastOptions({
 						message: "Usuario " + data?.userName +" eliminado con éxito",

@@ -3,9 +3,11 @@ import GetAllCommentsUseCase from '@/application/usecases/comment/GetAllCommentU
 import UpdateCommentUseCase from '@/application/usecases/comment/UpdateCommentUseCase';
 import { showResponseToast } from '@/components/Toasts/ToastResponse/logic';
 import Comment from '@/domain/entities/Comment';
+import { selectToken } from '@/features/slices/sessionSlice';
 import { getDate } from '@/helpers/dateHelper';
 import CommentRepo from '@/infrastructure/implementations/httpRequest/axios/CommentRepo';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 export interface CommentsListProps { }
 
@@ -20,11 +22,12 @@ const CommentsList: React.FC<CommentsListProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const getAllComments = async () => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await getAllCommentsUseCase.run();
+			const { data, status } = await getAllCommentsUseCase.run(token);
 			if (status === 200 && data) setComments(data);
 			setIsLoading(false);
 		} catch (err) {
@@ -38,7 +41,7 @@ const CommentsList: React.FC<CommentsListProps> = () => {
 			setIsLoading(true);
 			if (comment.uuid) {
 				comment.status = newStatus;
-				const { data, status } = await updateCommentUseCase.run(comment.uuid, comment);
+				const { data, status } = await updateCommentUseCase.run(comment.uuid, comment, token);
 				if (status === 200) {
 					setToastOptions({
 						message: "Comentario actualizado con éxito",
@@ -60,7 +63,7 @@ const CommentsList: React.FC<CommentsListProps> = () => {
 	const deleteComment = async (uuid: string) => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await deleteCommentUseCase.run(uuid);
+			const { data, status } = await deleteCommentUseCase.run(uuid, token);
 			if (status === 200) {
 				setToastOptions({
 					message: "Comentario eliminada con éxito",

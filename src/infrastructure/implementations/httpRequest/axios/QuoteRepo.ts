@@ -10,13 +10,21 @@ class QuoteRepo implements IQuoteRepo {
         this.url = process.env.API_URL + "quotes/";
     }
 
-    async getAll(): Promise<Response<Quote[]>> {
-        const response = await axios.get(this.url);
+    async getAll(token: string): Promise<Response<Quote[]>> {
+        const response = await axios.get(this.url, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async getOne(id: string): Promise<Response<Quote>> {
-        const response = await axios.get(this.url + id);
+    async getOne(id: string, token: string): Promise<Response<Quote>> {
+        const response = await axios.get(this.url + id, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
@@ -25,13 +33,21 @@ class QuoteRepo implements IQuoteRepo {
         return response;
     }
 
-    async update(id:string, quote: Quote): Promise<Response<Quote>> {
-        const response = await axios.put(this.url + id, quote);
+    async update(id:string, quote: Quote, token: string): Promise<Response<Quote>> {
+        const response = await axios.put(this.url + id, quote, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async delete(id: string): Promise<Response<Quote>> {
-        const response = await axios.delete(this.url + id);
+    async delete(id: string, token: string): Promise<Response<Quote>> {
+        const response = await axios.delete(this.url + id, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 }

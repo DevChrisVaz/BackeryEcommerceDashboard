@@ -9,8 +9,8 @@ class UpdateProductUseCase {
         this.productRepo = productRepo;
     }
 
-    async run(id: string, product: Product): Promise<Response<Product>> {        
-        const response: Response<Product> = await this.productRepo.update(id, product);
+    async run(id: string, product: Product, token: string): Promise<Response<Product>> {        
+        const response: Response<Product> = await this.productRepo.update(id, product, token);
         return response;
     }
 }

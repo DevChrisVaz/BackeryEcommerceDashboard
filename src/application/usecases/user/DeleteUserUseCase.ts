@@ -9,8 +9,8 @@ class DeleteUserUseCase {
         this.userRepo = userRepo;
     }
 
-    async run(id: string): Promise<Response<User>> {
-        const response: Response<User> = await this.userRepo.delete(id);
+    async run(id: string, token: string): Promise<Response<User>> {
+        const response: Response<User> = await this.userRepo.delete(id, token);
         return response;
     }
 }

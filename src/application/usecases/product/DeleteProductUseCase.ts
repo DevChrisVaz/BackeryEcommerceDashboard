@@ -9,8 +9,8 @@ class DeleteProductUseCase {
         this.productRepo = productRepo;
     }
 
-    async run(id: string): Promise<Response<Product>> {
-        const response: Response<Product> = await this.productRepo.delete(id);
+    async run(id: string, token: string): Promise<Response<Product>> {
+        const response: Response<Product> = await this.productRepo.delete(id, token);
         return response;
     }
 }

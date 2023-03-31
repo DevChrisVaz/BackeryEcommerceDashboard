@@ -1,4 +1,4 @@
-import { lazy, useEffect } from 'react';
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import './assets/styles/index.scss';
@@ -18,7 +18,6 @@ import { Error } from './pages/Error';
 import { Products } from './pages/Products';
 import { ProductsList } from './pages/Products/ProductsList';
 import { CreateCategory } from './pages/Categories/CreateCategory';
-// import { ProtectedRoutes } from './components/Security/ProtectedRoutes';
 import { ProductDetails } from './pages/Products/ProductDetails';
 import { CreateProduct } from './pages/Products/CreateProduct';
 import { Ingredients } from './pages/Ingredients';
@@ -34,9 +33,8 @@ import { QuotesList } from './pages/Quotes/QuotesList';
 import { QuotesDetails } from './pages/Quotes/QuotesDetails';
 
 function App() {
-
   // const CategoriesList = lazy(() => import("./pages/Categories/CategoriesList").then(({ CategoriesList }) => ({ default: CategoriesList })));
-
+ 
   useEffect(() => {
     popover();
   }, []);

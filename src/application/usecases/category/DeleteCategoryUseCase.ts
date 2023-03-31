@@ -9,8 +9,8 @@ class DeleteCategoryUseCase {
         this.categoryRepo = categoryRepo;
     }
 
-    async run(id: string): Promise<Response<Category>> {
-        const response: Response<Category> = await this.categoryRepo.delete(id);
+    async run(id: string, token: string): Promise<Response<Category>> {
+        const response: Response<Category> = await this.categoryRepo.delete(id, token);
         return response;
     }
 }

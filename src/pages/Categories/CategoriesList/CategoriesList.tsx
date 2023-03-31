@@ -9,6 +9,8 @@ import { Modal } from '../../../components/Modal';
 import { showModal } from '../../../components/Modal/logic';
 import DeleteCategoryUseCase from '../../../application/usecases/category/DeleteCategoryUseCase';
 import { showResponseToast } from '../../../components/Toasts/ToastResponse/logic';
+import { useSelector } from 'react-redux';
+import { selectToken } from '@/features/slices/sessionSlice';
 
 export interface CategoriesListProps { }
 
@@ -22,8 +24,8 @@ const CategoriesList: React.FC<CategoriesListProps> = () => {
 	const deleteCategoryUseCase = new DeleteCategoryUseCase(categoryRepo);
 
 	const navigate = useNavigate();
-
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const modalId = "modal-delete";
 
@@ -67,7 +69,7 @@ const CategoriesList: React.FC<CategoriesListProps> = () => {
 		try {
 			setIsLoading(true);
 			if(categoryToDelete && categoryToDelete.uuid) {
-				const { data, status } = await deleteCategoryUseCase.run(categoryToDelete.uuid);
+				const { data, status } = await deleteCategoryUseCase.run(categoryToDelete.uuid, token);
 				if (status === 200) {
 					setToastOptions({
 						message: "Categoría " + data?.name +" eliminada con éxito",

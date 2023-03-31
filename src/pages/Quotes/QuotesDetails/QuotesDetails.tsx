@@ -5,12 +5,14 @@ import { Modal } from '@/components/Modal';
 import { showModal } from '@/components/Modal/logic';
 import { showResponseToast } from '@/components/Toasts/ToastResponse/logic';
 import Quote from '@/domain/entities/Quote';
+import { selectToken } from '@/features/slices/sessionSlice';
 import { getDate } from '@/helpers/dateHelper';
 import ProductRepo from '@/infrastructure/implementations/httpRequest/axios/ProductRepo';
 import QuoteRepo from '@/infrastructure/implementations/httpRequest/axios/QuoteRepo';
 import moment from 'moment';
 import numeral from 'numeral';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate, useOutletContext, useParams } from 'react-router-dom';
 export interface QuotesDetailsProps { }
 
@@ -31,13 +33,14 @@ const QuotesDetails: React.FC<QuotesDetailsProps> = () => {
 	const navigate = useNavigate();
 	const { id } = useParams();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const modalId = "modal-delete";
 
 	const getQuote = async () => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await getQuoteByIdUseCase.run(id ?? "");
+			const { data, status } = await getQuoteByIdUseCase.run(id ?? "", token);
 			if (status === 200 && data) setQuote(data);
 			setIsLoading(false);
 		} catch (err) {
@@ -50,7 +53,7 @@ const QuotesDetails: React.FC<QuotesDetailsProps> = () => {
 		try {
 			setIsLoading(true);
 			if (quote && quote.uuid) {
-				const { data, status } = await deleteQuoteUseCase.run(quote.uuid ?? "");
+				const { data, status } = await deleteQuoteUseCase.run(quote.uuid ?? "", token);
 				if (status === 200) {
 					setToastOptions({
 						message: "Cotización eliminada con éxito",

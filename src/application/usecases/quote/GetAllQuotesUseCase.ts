@@ -9,8 +9,8 @@ class GetAllQuotesUseCase {
         this.quoteRepo = quoteRepo;
     }
 
-    async run(): Promise<Response<Quote[]>> {
-        let response: Response<Quote[]> = await this.quoteRepo.getAll();
+    async run(token: string): Promise<Response<Quote[]>> {
+        let response: Response<Quote[]> = await this.quoteRepo.getAll(token);
         return response;
     }
 }

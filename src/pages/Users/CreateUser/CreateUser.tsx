@@ -11,6 +11,8 @@ import User from '../../../domain/entities/User';
 import CreateUserException from '../../../domain/exceptions/user-exceptions/CreateUserException';
 import datepicker, { getDate } from '../../../assets/scripts/datepicker';
 import { ImageProfileInput } from '../../../components/imageInput/ImageProfileInput';
+import { useSelector } from 'react-redux';
+import { selectToken } from '@/features/slices/sessionSlice';
 
 export interface CreateUserProps { }
 
@@ -34,11 +36,12 @@ const CreateUser: React.FC<CreateUserProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const submitForm = async (values: User) => {
 		try {
 			setIsLoading(true);
-			const { status } = await createUserUseCase.run(values);
+			const { status } = await createUserUseCase.run(values, token);
 			setIsLoading(false);
 			if (status === 201) {
 				await setToastOptions({

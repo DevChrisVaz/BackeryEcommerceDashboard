@@ -9,8 +9,8 @@ class GetQuoteByIdUseCase {
         this.quoteRepo = quoteRepo;
     }
 
-    async run(id: string): Promise<Response<Quote>> {
-        const response: Response<Quote> = await this.quoteRepo.getOne(id);
+    async run(id: string, token: string): Promise<Response<Quote>> {
+        const response: Response<Quote> = await this.quoteRepo.getOne(id, token);
         return response;
     }
 }

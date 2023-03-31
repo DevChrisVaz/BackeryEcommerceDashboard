@@ -9,8 +9,8 @@ class GetAllCommentsUseCase {
         this.commentsRepo = commentsRepo;
     }
 
-    async run(): Promise<Response<Comment[]>> {
-        let response: Response<Comment[]> = await this.commentsRepo.getAll();
+    async run(token: string): Promise<Response<Comment[]>> {
+        let response: Response<Comment[]> = await this.commentsRepo.getAll(token);
         return response;
     }
 }

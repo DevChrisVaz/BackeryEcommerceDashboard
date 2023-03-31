@@ -9,8 +9,8 @@ class GetCommentByIdUseCase {
         this.commentRepo = commentRepo;
     }
 
-    async run(id: string): Promise<Response<Comment>> {
-        const response: Response<Comment> = await this.commentRepo.getOne(id);
+    async run(id: string, token: string): Promise<Response<Comment>> {
+        const response: Response<Comment> = await this.commentRepo.getOne(id, token);
         return response;
     }
 }

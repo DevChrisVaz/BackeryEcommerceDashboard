@@ -10,20 +10,28 @@ class UserRepo implements IUserRepo {
     private readonly url: string;
 
     constructor(){ 
-        this.url = process.env.API_URL + "/users/";
+        this.url = process.env.API_URL + "users/";
     }
 
-    async getAll(): Promise<Response<User[]>> {
-        const response = await axios.get(this.url);
+    async getAll(token: string): Promise<Response<User[]>> {
+        const response = await axios.get(this.url, {
+            headers: {
+                "Authorization": "bearer " + token
+            }
+        });
         return response;
     }
 
-    async getOne(id: string): Promise<Response<User>> {
-        const response = await axios.get(this.url + id);
+    async getOne(id: string, token: string): Promise<Response<User>> {
+        const response = await axios.get(this.url + id, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async create(user: User): Promise<Response<User>> {
+    async create(user: User, token: string): Promise<Response<User>> {
         const formData = new FormData();
         formData.append("firstName", user.firstName ?? "");
         formData.append("lastName", user.lastName ?? "");
@@ -34,24 +42,43 @@ class UserRepo implements IUserRepo {
         formData.append("profilePicture", user.profilePicture ?? null);
         const response = await axios.post(this.url, formData, {
             headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                Authorization: "bearer " + token
             }
         });
         return response;
     }
 
-    async update(id:string, user: User): Promise<Response<User>> {
-        const response = await axios.put(this.url + id, user);
+    async update(id:string, user: User, token: string): Promise<Response<User>> {
+        const response = await axios.put(this.url + id, user, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async delete(id: string): Promise<Response<User>> {
-        const response = await axios.delete(this.url + id);
+    async delete(id: string, token: string): Promise<Response<User>> {
+        const response = await axios.delete(this.url + id, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
     async login(credentials: { userName: string, password: string }): Promise<Response<string>> {
         const response = await axios.post(this.url + "login", credentials);
+        return response;
+    }
+
+    async refreshSession(): Promise<Response<string>> {
+        const response = await axios.get(this.url + "refresh", { withCredentials: true });
+        return response;
+    }
+
+    async logout(): Promise<Response<any>> {
+        const response = await axios.get(this.url + "logout", { withCredentials: true });
         return response;
     }
 }

@@ -17,10 +17,10 @@ class CreateUserUseCase {
         this.userValidationsRepo = userValidationsRepo;
     }
 
-    async run(user: User): Promise<Response<User>> {
+    async run(user: User, token: string): Promise<Response<User>> {
         const errors: UserErrors | null = await this.userValidationsRepo.create(user);
         if (errors) throw new CreateUserException(errors);
-        const response: Response<User> = await this.userRepo.create(user);
+        const response: Response<User> = await this.userRepo.create(user, token);
         return response;
     }
 }

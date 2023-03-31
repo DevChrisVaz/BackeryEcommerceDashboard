@@ -6,8 +6,10 @@ import { Modal } from '@/components/Modal';
 import { showModal } from '@/components/Modal/logic';
 import { showResponseToast } from '@/components/Toasts/ToastResponse/logic';
 import Quote from '@/domain/entities/Quote';
+import { selectToken } from '@/features/slices/sessionSlice';
 import QuoteRepo from '@/infrastructure/implementations/httpRequest/axios/QuoteRepo';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate, useOutletContext } from 'react-router-dom';
 export interface QuotesListProps { }
 
@@ -22,6 +24,7 @@ const QuotesList: React.FC<QuotesListProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const tableHeader = [
 		{
@@ -37,12 +40,9 @@ const QuotesList: React.FC<QuotesListProps> = () => {
 			name: "Teléfono"
 		},
 		{
-			id: "city",
-			name: "Ciudad"
-		},
-		{
-			id: "zip",
-			name: "Código Postal"
+			id: "createdAt",
+			name: "Fecha",
+			date: true
 		}
 	];
 
@@ -61,7 +61,7 @@ const QuotesList: React.FC<QuotesListProps> = () => {
 	const getAllProducts = async () => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await getAllQuotesUseCase.run();
+			const { data, status } = await getAllQuotesUseCase.run(token);
 			if (status === 200 && data) setQuotes(data);
 			setIsLoading(false);
 		} catch (err) {
@@ -74,7 +74,7 @@ const QuotesList: React.FC<QuotesListProps> = () => {
 		try {
 			setIsLoading(true);
 			if (quoteToDelete && quoteToDelete.uuid) {
-				const { data, status } = await deleteQuoteUseCase.run(quoteToDelete.uuid);
+				const { data, status } = await deleteQuoteUseCase.run(quoteToDelete.uuid, token);
 				if (status === 200) {
 					setToastOptions({
 						message: "Cotización eliminada con éxito",

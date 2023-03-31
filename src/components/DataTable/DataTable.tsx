@@ -4,6 +4,7 @@ import logic from './logic';
 import { Header } from './typeDefs';
 import numeral from "numeral";
 import { Modal } from '../Modal';
+import { getDate } from '@/helpers/dateHelper';
 
 export interface DataTableProps<T> {
 	columns: Header[];
@@ -67,6 +68,7 @@ const DataTable: React.FC<DataTableProps<any>> = (props) => {
 											return (
 												<td key={column.id}>{
 													column.price ? numeral(row[column.id]).format("$0,0.00") :
+														column.date ? getDate(row[column.id]) :
 														column.concat && column.concat.fields.length > 0 ? column.concat.fields.map((field: string) => row[field] + column.concat.separator) :
 															row[column.id]
 												}</td>

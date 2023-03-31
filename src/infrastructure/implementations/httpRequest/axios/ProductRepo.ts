@@ -23,7 +23,7 @@ class ProductRepo implements IProductRepo {
         return response;
     }
 
-    async create(product: Product): Promise<Response<Product>> {
+    async create(product: Product, token: string): Promise<Response<Product>> {
         const formData = new FormData();
         let tags: string = "";
         formData.append("name", product.name ?? "");
@@ -41,19 +41,28 @@ class ProductRepo implements IProductRepo {
 
         const response = await axios.post(this.url, formData, {
             headers: {
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                Authorization: "bearer " + token
             }
         });
         return response;
     }
 
-    async update(id:string, product: Product): Promise<Response<Product>> {
-        const response = await axios.put(this.url + id, product);
+    async update(id:string, product: Product, token: string): Promise<Response<Product>> {
+        const response = await axios.put(this.url + id, product, {
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 
-    async delete(id: string): Promise<Response<Product>> {
-        const response = await axios.delete(this.url + id);
+    async delete(id: string, token: string): Promise<Response<Product>> {
+        const response = await axios.delete(this.url + id,{
+            headers: {
+                Authorization: "bearer " + token
+            }
+        });
         return response;
     }
 }

@@ -9,6 +9,8 @@ import { showModal } from '../../../components/Modal/logic';
 import { showResponseToast } from '../../../components/Toasts/ToastResponse/logic';
 import Product from '../../../domain/entities/Product';
 import ProductRepo from '../../../infrastructure/implementations/httpRequest/axios/ProductRepo';
+import { selectToken } from '@/features/slices/sessionSlice';
+import { useSelector } from 'react-redux';
 export interface ProductsListProps { }
 
 const ProductsList: React.FC<ProductsListProps> = () => {
@@ -22,6 +24,7 @@ const ProductsList: React.FC<ProductsListProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const tableHeader = [
 		{
@@ -70,7 +73,7 @@ const ProductsList: React.FC<ProductsListProps> = () => {
 		try {
 			setIsLoading(true);
 			if (productToDelete && productToDelete.uuid) {
-				const { data, status } = await deleteProductUseCase.run(productToDelete.uuid);
+				const { data, status } = await deleteProductUseCase.run(productToDelete.uuid, token);
 				if (status === 200) {
 					setToastOptions({
 						message: "Categoría " + data?.name + " eliminada con éxito",

@@ -9,8 +9,8 @@ class CreateProductUseCase {
         this.productRepo = productRepo;
     }
 
-    async run(product: Product): Promise<Response<Product>> {
-        const response: Response<Product> = await this.productRepo.create(product);
+    async run(product: Product, token: string): Promise<Response<Product>> {
+        const response: Response<Product> = await this.productRepo.create(product, token);
         return response;
     }
 }

@@ -10,6 +10,8 @@ import Category from '../../../domain/entities/Category';
 import Product from '../../../domain/entities/Product';
 import CategoryRepo from '../../../infrastructure/implementations/httpRequest/axios/CategoryRepo';
 import ProductRepo from '../../../infrastructure/implementations/httpRequest/axios/ProductRepo';
+import { selectToken } from '@/features/slices/sessionSlice';
+import { useSelector } from 'react-redux';
 
 export interface CreateProductProps { }
 
@@ -31,6 +33,7 @@ const CreateProduct: React.FC<CreateProductProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const getAllCategories = async () => {
 		try {
@@ -75,7 +78,7 @@ const CreateProduct: React.FC<CreateProductProps> = () => {
 	const submitForm = async (values: Product) => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await createProductUseCase.run(values);
+			const { data, status } = await createProductUseCase.run(values, token);
 			if (status === 201) {
 				await setToastOptions({
 					message: "Producto " + data?.name + " creado con éxito",

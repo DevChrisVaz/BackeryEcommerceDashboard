@@ -9,8 +9,8 @@ class UpdateCommentUseCase {
         this.commentRepo = commentRepo;
     }
 
-    async run(id: string, comment: Comment): Promise<Response<Comment>> {
-        const response: Response<Comment> = await this.commentRepo.update(id, comment);
+    async run(id: string, comment: Comment, token: string): Promise<Response<Comment>> {
+        const response: Response<Comment> = await this.commentRepo.update(id, comment, token);
         return response;
     }
 }

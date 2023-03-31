@@ -9,8 +9,8 @@ class DeleteQuoteUseCase {
         this.quoteRepo = quoteRepo;
     }
 
-    async run(id: string): Promise<Response<Quote>> {
-        const response: Response<Quote> = await this.quoteRepo.delete(id);
+    async run(id: string, token: string): Promise<Response<Quote>> {
+        const response: Response<Quote> = await this.quoteRepo.delete(id, token);
         return response;
     }
 }

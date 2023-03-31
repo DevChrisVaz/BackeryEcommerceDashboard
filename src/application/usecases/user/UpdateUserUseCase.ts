@@ -9,8 +9,8 @@ class UpdateUserUseCase {
         this.userRepo = userRepo;
     }
 
-    async run(id: string, user: User): Promise<Response<User>> {
-        const response: Response<User> = await this.userRepo.update(id, user);
+    async run(id: string, user: User, token: string): Promise<Response<User>> {
+        const response: Response<User> = await this.userRepo.update(id, user, token);
         return response;
     }
 }

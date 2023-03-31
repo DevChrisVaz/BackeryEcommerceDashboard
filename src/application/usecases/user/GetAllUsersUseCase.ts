@@ -10,8 +10,8 @@ class GetAllUsersUseCase {
         this.userRepo = userRepo;
     }
 
-    async run(): Promise<Response<User[]>> {
-        let response: Response<User[]> = await this.userRepo.getAll();
+    async run(token: string): Promise<Response<User[]>> {
+        let response: Response<User[]> = await this.userRepo.getAll(token);
         if (response.data?.length) {
             response.data = response.data.map(u => {
                 u = getFullName(u);

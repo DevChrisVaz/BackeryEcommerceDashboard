@@ -9,8 +9,8 @@ class DeleteCommentUseCase {
         this.commentRepo = commentRepo;
     }
 
-    async run(id: string): Promise<Response<Comment>> {
-        const response: Response<Comment> = await this.commentRepo.delete(id);
+    async run(id: string, token: string): Promise<Response<Comment>> {
+        const response: Response<Comment> = await this.commentRepo.delete(id, token);
         return response;
     }
 }

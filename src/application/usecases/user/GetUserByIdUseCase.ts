@@ -9,8 +9,8 @@ class GetUserByIdUseCase {
         this.userRepo = userRepo;
     }
 
-    async run(id: string): Promise<Response<User>> {
-        const response: Response<User> = await this.userRepo.getOne(id);
+    async run(id: string, token: string): Promise<Response<User>> {
+        const response: Response<User> = await this.userRepo.getOne(id, token);
         return response;
     }
 }

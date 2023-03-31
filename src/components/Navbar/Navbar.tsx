@@ -7,6 +7,8 @@ import { Modal } from '../Modal';
 import logic from './logic';
 import { removeToken, selectToken } from '../../features/slices/sessionSlice';
 import { useSelector } from 'react-redux';
+import UserRepo from '@/infrastructure/implementations/httpRequest/axios/UserRepo';
+import UserLogoutUseCase from '@/application/usecases/user/UserLogoutUseCase';
 export interface NavbarProps { }
 
 const Navbar: React.FC<NavbarProps> = () => {
@@ -17,12 +19,19 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const token = useSelector(selectToken);
 
-  const handleLogout = () => {
-    dispatch(removeToken());
-    navigate("/login");
+  const userRepo = new UserRepo();
+  const userLogoutUseCase = new UserLogoutUseCase(userRepo);
+
+  const handleLogout = async () => {
+    try {
+      await userLogoutUseCase.run();
+      dispatch(removeToken());
+      navigate("/login");
+    } catch {
+
+    }
   }
  
   useEffect(() => {

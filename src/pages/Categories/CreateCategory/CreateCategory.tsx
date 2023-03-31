@@ -10,6 +10,8 @@ import CreateCategoryException from '../../../domain/exceptions/category-excepti
 import { Loading } from '../../../components/Loading';
 import { showResponseToast } from '../../../components/Toasts/ToastResponse/logic';
 import CategoryAlreadyExistsException from '../../../domain/exceptions/category-exceptions/CategoryAlreadyExistsException';
+import { useSelector } from 'react-redux';
+import { selectToken } from '@/features/slices/sessionSlice';
 
 export interface CreateCategoryProps { }
 
@@ -29,11 +31,12 @@ const CreateCategory: React.FC<CreateCategoryProps> = () => {
 
 	const navigate = useNavigate();
 	const { setToastOptions } = useOutletContext<any>();
+	const token = useSelector(selectToken);
 
 	const submitForm = async (values: Category) => {
 		try {
 			setIsLoading(true);
-			const { data, status } = await createCategoryUseCase.run(values);
+			const { data, status } = await createCategoryUseCase.run(values, token);
 			if (status === 201) {
 				setToastOptions({
 					message: "Categoría " + data?.name + " creada con éxito",
