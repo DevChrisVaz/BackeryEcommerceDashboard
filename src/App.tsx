@@ -31,6 +31,11 @@ import { CommentsList } from './pages/Comments/CommentsList';
 import { Quotes } from './pages/Quotes';
 import { QuotesList } from './pages/Quotes/QuotesList';
 import { QuotesDetails } from './pages/Quotes/QuotesDetails';
+import { CustomCakes } from './pages/CustomCakes';
+import { CakeOptions } from './pages/CustomCakes/CakeOptions';
+import { Toppings } from './pages/Toppings';
+import { ToppingsList } from './pages/Toppings/ToppingsList';
+import { CreateTopping } from './pages/Toppings/CreateTopping';
 
 function App() {
   // const CategoriesList = lazy(() => import("./pages/Categories/CategoriesList").then(({ CategoriesList }) => ({ default: CategoriesList })));
@@ -63,9 +68,19 @@ function App() {
               <Route path="new" element={<CreateProduct />} />
               <Route path=':id' element={<ProductDetails />} />
             </Route>
+            <Route path="custom-cakes" element={<CustomCakes />}>
+              <Route index element={<CakeOptions />} />
+              {/* <Route path="new" element={<CreateProduct />} />
+              <Route path=':id' element={<ProductDetails />} /> */}
+            </Route>
             <Route path="ingredients" element={<Ingredients />}>
               <Route index element={<IngredientsList />} />
               <Route path="new" element={<CreateIngredient />} />
+              {/* <Route path=':id' element={<ProductDetails />} /> */}
+            </Route>
+            <Route path="toppings" element={<Toppings />}>
+              <Route index element={<ToppingsList />} />
+              <Route path="new" element={<CreateTopping />} />
               {/* <Route path=':id' element={<ProductDetails />} /> */}
             </Route>
             <Route path="users" element={<Users />}>

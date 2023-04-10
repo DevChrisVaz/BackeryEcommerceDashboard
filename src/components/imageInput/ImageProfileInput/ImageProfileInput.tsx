@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FileUpload } from '@mui/icons-material';
-import { BsFillPersonFill } from 'react-icons/bs';
+import { BsCardImage } from 'react-icons/bs';
 import { ImageProfileInputStyles } from '../styles';
 
 export interface ImageProfileInputProps {
@@ -38,7 +38,7 @@ const ImageProfileInput: React.FC<ImageProfileInputProps> = ({
 	// };
 
 	return (
-		<ImageProfileInputStyles size={otherProps.size}>
+		<ImageProfileInputStyles radius={otherProps.radius} size={otherProps.size}>
 			<div className="image-input-container">
 				{
 					image ?
@@ -46,7 +46,7 @@ const ImageProfileInput: React.FC<ImageProfileInputProps> = ({
 							<img src={URL.createObjectURL(image)} alt="" />
 						</div> :
 						<div className="avatar bgc-soft">
-							<BsFillPersonFill className='icon' />
+							<BsCardImage className='icon' />
 						</div>
 				}
 				<div className="picture-upload-container button-primary">

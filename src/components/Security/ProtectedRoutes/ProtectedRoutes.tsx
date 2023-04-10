@@ -5,7 +5,7 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 import React, { ReactNode, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export interface ProtectedRoutesProps {
 	redirectTo: string;
@@ -26,25 +26,38 @@ const ProtectedRoutes: React.FC<ProtectedRoutesProps> = (props) => {
 	const refreshUserSessionUseCase = new RefreshUserSessionUseCase(userRepo);
 
 	useEffect(() => {
-		if (!token) navigate(props.redirectTo);
-		const interval = setInterval(async () => {
-			const { exp }: TokenData = jwtDecode(token);
-			const currentTime = Date.now() / 1000;
-
-			if (exp && exp < currentTime) {
-				try {
-					const { data, status } = await refreshUserSessionUseCase.run();
-					if (status === 201 && data) dispatch(setToken(data));
-					else throw new Error();
-				} catch (err) {
-					dispatch(removeToken);
-					navigate(props.redirectTo)
+		let interval: any;
+		if (token) {
+			interval = setInterval(async () => {
+				const { exp }: TokenData = jwtDecode(token);
+				const currentTime = Date.now() / 1000;
+	
+				if (exp && exp < currentTime) {
+					try {
+						const { data, status } = await refreshUserSessionUseCase.run();
+						if (status === 201 && data) {
+							dispatch(setToken(data));
+						}
+						else {
+							console.log("made itr")
+							dispatch(removeToken());
+							// navigate(props.redirectTo);
+						}
+					} catch {
+						dispatch(removeToken());
+						// navigate(props.redirectTo)
+					}
 				}
-			}
-
-		}, 5000);
+	
+			}, 5000);
+		}
 		return () => clearInterval(interval);
 	}, []);
+
+	useEffect(() => {
+		if (!token) navigate(props.redirectTo);
+	}, [token])
+	
 
 	return <>{props.children}</>;
 };

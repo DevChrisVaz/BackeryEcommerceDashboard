@@ -82,9 +82,11 @@ const QuotesDetails: React.FC<QuotesDetailsProps> = () => {
 
 	useEffect(() => {
 		if (quote) {
+			let tempTotal: number = 0;
 			quote.products?.forEach(item => {
-				setTotal(total + (quote.productsRef?.find(p => p.uuid === item.product)?.price || 0) * (item.qty || 0));
+				tempTotal += (quote.productsRef?.find(p => p.uuid === item.product)?.price || 0) * (item.qty || 0);
 			});
+			setTotal(tempTotal);
 		}
 	}, [quote.uuid]);
 

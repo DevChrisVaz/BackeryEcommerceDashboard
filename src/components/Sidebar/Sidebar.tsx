@@ -74,6 +74,12 @@ const Sidebar : React.FC<SidebarProps> = () => {
                   <NavLink className='sidebar-link' to="products">Productos</NavLink>
                 </li>
                 {/* <li>
+                  <NavLink className='sidebar-link' to="custom-cakes">Pasteles personalizados</NavLink>
+                </li> */}
+                <li>
+                  <NavLink className='sidebar-link' to="toppings">Toppings</NavLink>
+                </li>
+                {/* <li>
                   <NavLink className='sidebar-link' to="ingredients">Ingredientes</NavLink>
                 </li>
                 <li>

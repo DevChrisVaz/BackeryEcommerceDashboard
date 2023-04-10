@@ -201,7 +201,7 @@ export const ImageProfileInputStyles = styled.div`
     & > .img-container, > .avatar {
       width: ${props => props.size ?? '150px'};
       height: ${props => props.size ?? '150px'};
-      border-radius: 50%;
+      border-radius: ${props => props.radius ?? '50%'};;
       /* background: rgb(228, 223, 233); */
     }
     & > .img-container {

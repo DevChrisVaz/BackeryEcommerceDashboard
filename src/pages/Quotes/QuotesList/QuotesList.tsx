@@ -127,7 +127,17 @@ const QuotesList: React.FC<QuotesListProps> = () => {
 					<div className="row">
 						<div className="col-md-12">
 							<div className="bgc-white bd bdrs-3 p-20 mB-20">
-								<DataTable columns={tableHeader} rows={quotes} linked actions={actions} />
+								<DataTable tableId="quotes" columns={tableHeader} rows={quotes} linked actions={actions} />
+							</div>
+						</div>
+					</div>
+					<div className="d-flex justify-content-between">
+						<h4 className="c-grey-900 mT-10 mB-30">Cotizaciones de pasteles personalizados</h4>
+					</div>
+					<div className="row">
+						<div className="col-md-12">
+							<div className="bgc-white bd bdrs-3 p-20 mB-20">
+								<DataTable tableId="customQuotes" columns={tableHeader} rows={quotes} linked actions={actions} />
 							</div>
 						</div>
 					</div>

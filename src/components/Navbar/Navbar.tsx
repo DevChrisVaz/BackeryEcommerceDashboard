@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import jwt_decode from "jwt-decode";
-// import useModal from '../../hooks/useModal';
 import { Modal } from '../Modal';
 import logic from './logic';
 import { removeToken, selectToken } from '../../features/slices/sessionSlice';
@@ -35,7 +34,7 @@ const Navbar: React.FC<NavbarProps> = () => {
   }
  
   useEffect(() => {
-    setDecodedToken(jwt_decode(token));
+    if(token) setDecodedToken(jwt_decode(token));
     setReady(true);
     setTimeout(() => {
       logic();

@@ -12,6 +12,7 @@ export interface DataTableProps<T> {
 	footbar?: boolean;
 	linked?: boolean;
 	actions?: Actions;
+	tableId?: string;
 }
 
 interface Actions {
@@ -24,13 +25,13 @@ const DataTable: React.FC<DataTableProps<any>> = (props) => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		logic();
+		logic(props.tableId);
 	}, []);
 
 	return (
 		<>
 
-			<table id="dataTable" className="table table-striped table-bordered" cellSpacing={0} width="100%">
+			<table id={props.tableId ?? "dataTable"} className="table table-striped table-bordered" cellSpacing={0} width="100%">
 				<thead>
 					<tr>
 						{

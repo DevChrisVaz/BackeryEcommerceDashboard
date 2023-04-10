@@ -125,6 +125,7 @@ const CreateCategory: React.FC<CreateCategoryProps> = () => {
 										<option selected>Seleccione un tipo</option>
 										<option value="CATEGORY">Categoría principal</option>
 										<option value="TAG">Subcategoría</option>
+										<option value="TOPPING">Categoría de topping</option>
 									</select>
 								</div>
 								<div className="col text-end">
