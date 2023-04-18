@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { CollectionsBookmark, Email, Home, Settings, WhatsApp, Comment, RequestQuote } from '@mui/icons-material';
+import { CollectionsBookmark, Email, Home, Settings, WhatsApp, Comment, RequestQuote, Collections } from '@mui/icons-material';
 import logic from "./logic";
 export interface SidebarProps {}
 
@@ -106,6 +106,15 @@ const Sidebar : React.FC<SidebarProps> = () => {
                   <RequestQuote className="sidebar-icon" />
                 </span>
                 <span className="title">Cotizaciones</span>
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className='sidebar-link' to="/gallery">
+                <span className="icon-holder">
+                  {/* <i className="c-indigo-500 ti-bar-chart"></i> */}
+                  <Collections className="sidebar-icon" />
+                </span>
+                <span className="title">Galería</span>
               </NavLink>
             </li>
             {/* <li className="nav-item">

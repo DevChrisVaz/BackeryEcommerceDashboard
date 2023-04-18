@@ -25,11 +25,11 @@ const Navbar: React.FC<NavbarProps> = () => {
 
   const handleLogout = async () => {
     try {
-      await userLogoutUseCase.run();
+      // await userLogoutUseCase.run();
       dispatch(removeToken());
       navigate("/login");
-    } catch {
-
+    } catch (err) {
+      console.log(err)
     }
   }
  

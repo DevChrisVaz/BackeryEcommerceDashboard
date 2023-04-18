@@ -36,6 +36,9 @@ import { CakeOptions } from './pages/CustomCakes/CakeOptions';
 import { Toppings } from './pages/Toppings';
 import { ToppingsList } from './pages/Toppings/ToppingsList';
 import { CreateTopping } from './pages/Toppings/CreateTopping';
+import { CreateGalleryItem } from './pages/Gallery/CreateGalleryItem';
+import { GalleryItemsList } from './pages/Gallery/GalleryItemsList';
+import { Gallery } from './pages/Gallery';
 
 function App() {
   // const CategoriesList = lazy(() => import("./pages/Categories/CategoriesList").then(({ CategoriesList }) => ({ default: CategoriesList })));
@@ -94,6 +97,11 @@ function App() {
             <Route path="quotes" element={<Quotes />}>
               <Route index element={<QuotesList />} />
               <Route path=":id" element={<QuotesDetails />} />
+            </Route>
+            <Route path="gallery" element={<Gallery />}>
+              <Route index element={<GalleryItemsList />} />
+              <Route path="new" element={<CreateGalleryItem />} />
+              {/* <Route path=":id" element={<QuotesDetails />} /> */}
             </Route>
           </Route>
           <Route path="login" element={<Login />} />
