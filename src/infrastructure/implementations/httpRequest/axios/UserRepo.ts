@@ -2,9 +2,8 @@ import axios from "axios";
 import Response from "../../../../domain/entities/Response";
 import User from "../../../../domain/entities/User";
 import IUserRepo from "../../../../domain/repositories/IUserRepo";
-// import dotenv from "dotenv";
 
-// dotenv.config();
+axios.defaults.withCredentials = true;
 
 class UserRepo implements IUserRepo {
     private readonly url: string;
