@@ -2,9 +2,8 @@ import axios from "axios";
 import Ingredient from "../../../../domain/entities/Ingredient";
 import Response from "../../../../domain/entities/Response";
 import IIngredientRepo from "../../../../domain/repositories/IIngredientRepo";
-// import dotenv from "dotenv";
 
-// dotenv.config();
+axios.defaults.withCredentials = true;
 
 class IngredientRepo implements IIngredientRepo {
     private readonly url: string;

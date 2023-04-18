@@ -2,9 +2,8 @@ import axios from "axios";
 import Category from "../../../../domain/entities/Category";
 import Response from "../../../../domain/entities/Response";
 import ICategoryRepo from "../../../../domain/repositories/ICategoryRepo";
-// import dotenv from "dotenv";
 
-// dotenv.config();
+axios.defaults.withCredentials = true;
 
 class CategoryRepo implements ICategoryRepo {
     private readonly url: string;

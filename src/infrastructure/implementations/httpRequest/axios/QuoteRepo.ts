@@ -3,6 +3,8 @@ import Quote from "../../../../domain/entities/Quote";
 import Response from "../../../../domain/entities/Response";
 import IQuoteRepo from "../../../../domain/repositories/IQuoteRepo";
 
+axios.defaults.withCredentials = true;
+
 class QuoteRepo implements IQuoteRepo {
     private readonly url: string;
 

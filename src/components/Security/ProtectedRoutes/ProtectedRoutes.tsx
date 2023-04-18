@@ -35,11 +35,11 @@ const ProtectedRoutes: React.FC<ProtectedRoutesProps> = (props) => {
 				if (exp && exp < currentTime) {
 					try {
 						const { data, status } = await refreshUserSessionUseCase.run();
-						if (status === 201 && data) {
+						if (status === 200 && data) {
+							console.log(data)
 							dispatch(setToken(data));
 						}
 						else {
-							console.log("made itr")
 							dispatch(removeToken());
 							// navigate(props.redirectTo);
 						}
@@ -52,7 +52,7 @@ const ProtectedRoutes: React.FC<ProtectedRoutesProps> = (props) => {
 			}, 5000);
 		}
 		return () => clearInterval(interval);
-	}, []);
+	}, [token]);
 
 	useEffect(() => {
 		if (!token) navigate(props.redirectTo);

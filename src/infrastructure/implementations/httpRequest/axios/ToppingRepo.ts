@@ -2,9 +2,8 @@ import axios from "axios";
 import Topping from "../../../../domain/entities/Topping";
 import Response from "../../../../domain/entities/Response";
 import IToppingRepo from "../../../../domain/repositories/IToppingRepo";
-// import dotenv from "dotenv";
 
-// dotenv.config();
+axios.defaults.withCredentials = true;
 
 class ToppingRepo implements IToppingRepo {
     private readonly url: string;

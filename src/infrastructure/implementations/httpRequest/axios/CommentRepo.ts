@@ -3,6 +3,8 @@ import ICommentRepo from "@/domain/repositories/ICommentRepo";
 import axios from "axios";
 import Response from "../../../../domain/entities/Response";
 
+axios.defaults.withCredentials = true;
+
 class CommentRepo implements ICommentRepo {
     private readonly url: string;
 

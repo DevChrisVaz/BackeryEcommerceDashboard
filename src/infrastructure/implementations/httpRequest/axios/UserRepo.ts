@@ -72,12 +72,12 @@ class UserRepo implements IUserRepo {
     }
 
     async refreshSession(): Promise<Response<string>> {
-        const response = await axios.get(this.url + "refresh", { withCredentials: true });
+        const response = await axios.get(this.url + "refresh");
         return response;
     }
 
     async logout(): Promise<Response<any>> {
-        const response = await axios.get(this.url + "logout", { withCredentials: true });
+        const response = await axios.get(this.url + "logout");
         return response;
     }
 }

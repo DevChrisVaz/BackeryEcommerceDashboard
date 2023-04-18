@@ -2,9 +2,8 @@ import axios from "axios";
 import Product from "../../../../domain/entities/Product";
 import Response from "../../../../domain/entities/Response";
 import IProductRepo from "../../../../domain/repositories/IProductRepo";
-// import dotenv from "dotenv";
 
-// dotenv.config();
+axios.defaults.withCredentials = true;
 
 class ProductRepo implements IProductRepo {
     private readonly url: string;
